@@ -1,2 +1,2 @@
 # CodeWars-BattleshipFieldValidator
-Solution for kata https://www.codewars.com/kata/battleship-field-validator
+Some of mine solutions for kata form Codewars
