@@ -9,27 +9,27 @@ public class Fibonacci
             return new BigInteger(0);
         else if (n > 0)
         {
-            for (int i = 0; i < n - 1; i++)
+            for (int i = 0; i < (n - 1) / 2; i++)
             {
                 a += b;
-                //swap numbers
-                a = a + b;
-                b = a - b;
-                a = a - b;
+                b += a;
             }
-            return b;
+            if ((n - 1) % 2 == 1)
+                return a + b;
+            else
+                return b;
         }
         else if (n < 0)
         {
-            for (int i = 0; i < -n; i++)
+            for (int i = 0; i < (-n) / 2; i++)
             {
                 b -= a;
-                //swap numbers
-                a = a + b;
-                b = a - b;
-                a = a - b;
+                a -= b;
             }
-            return a;
+            if ((-n) % 2 == 1)
+                return b - a;
+            else
+                return a;
         }
         else //duh
             return new BigInteger(0);
