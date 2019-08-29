@@ -1,25 +1,27 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 public class Kata
 {
     public static long NextBiggerNumber(long n)
     {
+        //find last digit that has bigger digit behind
+        //place bigger digit in place of smaller
+        //sort smaller digit and all digits behind it and before bigger letter
+            //and place it behind bigger
         string str = n.ToString();
-        Console.WriteLine(str);
-        if (n == long.Parse(string.Join("", str.OrderByDescending(c => c))))
-            return -1;
-
-        for(int i=2;i<=str.Length;i++)
+        for (int i = 1; i <= str.Length; i++)
         {
-            Console.WriteLine($"{str[str.Length - i]} vs {str[str.Length - 1]}");
-            if(str[str.Length-i]<str[str.Length-1])
+            for (int j = 1; j < i; j++)
             {
-                string temp = string.Join("", str.Substring(str.Length - i, i - 1)
-                                    .OrderBy(c => c));
-                return long.Parse(str.Substring(0, str.Length - i) + str[str.Length - 1] + temp);
+                if (str[str.Length-i]<str[str.Length-j])
+                {
+                    return long.Parse(str.Substring(0, str.Length - i)
+                                        + str[str.Length - j]
+                                        + string.Join("", str.Remove(str.Length - j, 1)
+                                                                .Substring(str.Length - i, i - 1)
+                                                                .OrderBy(c => c)));
+                }
             }
         }
-
-        return long.Parse(str.Substring(0, str.Length - 2) + str[str.Length - 1] + str[str.Length - 2]);
+        return -1;
     }
 }
