@@ -18,10 +18,10 @@ public class Finder
     public static bool PathFinder(string maze)
     {
         n = maze.Split("\n").Length;
-        board = maze.Split("\n").Select(s=>s.ToCharArray()).ToArray();
+        board = maze.Split("\n").Select(s => s.ToCharArray()).ToArray();
         positions = new Stack<Position>();
         Position curentPosition = new Position(0, 0);
-        
+
         while (true)
         {
             //if found exit
@@ -30,7 +30,7 @@ public class Finder
             //mark I was here
             board[curentPosition.x][curentPosition.y] = ' ';
             //if can move south
-            if (curentPosition.x + 1 < n 
+            if (curentPosition.x + 1 < n
                 && board[curentPosition.x + 1][curentPosition.y] == '.')
             {
                 positions.Push(curentPosition);
@@ -61,7 +61,7 @@ public class Finder
                 curentPosition = new Position(curentPosition.x, curentPosition.y - 1);
                 continue;
             }
-            else if(positions.Count>0)
+            else if (positions.Count > 0)
             {
                 curentPosition = positions.Pop();
                 continue;
