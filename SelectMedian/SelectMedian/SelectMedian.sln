@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29209.62
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SelectMedian", "SelectMedian\SelectMedian.csproj", "{AA08104B-006D-4472-BCEC-35AC713FA13C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AA08104B-006D-4472-BCEC-35AC713FA13C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA08104B-006D-4472-BCEC-35AC713FA13C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA08104B-006D-4472-BCEC-35AC713FA13C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA08104B-006D-4472-BCEC-35AC713FA13C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4B0BE4D9-080A-4ECD-8589-2E948F632F3D}
+	EndGlobalSection
+EndGlobal
