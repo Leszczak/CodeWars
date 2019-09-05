@@ -35,38 +35,55 @@ public class PokerHand : IComparable<PokerHand>
                                 && g.Contains(new Card("KX"))
                                 && g.Contains(new Card("JX"))
                                 && g.Contains(new Card("TX"))))
-            Value += 900;
+            Value = 900;
         //Straight flush
         else if (false)
-            Value += 800;
+            Value = 800;
         //Four of a kind 	
         else if (cards.GroupBy(c => c.Value).Any(g => g.Contains(new Card("XS"))
                                                       && g.Contains(new Card("XH"))
                                                       && g.Contains(new Card("XD"))
                                                       && g.Contains(new Card("XC"))))
-            Value += 700;
+            Value = 700;
         //Full house
         else if (cards.GroupBy(c => c.Value).Any(g => g.Count() >= 3) //3
                     && cards.GroupBy(c => c.Value).Where(g => g.Count() >= 2).Count() >= 2) //2
-            Value += 600;
+            Value = 600;
         //Flush
         else if (false)
-            Value += 500;
+            Value = 500;
         //Straight
         else if (false)
-            Value += 400;
+            Value = 400;
         //Three of a kind
         else if (cards.GroupBy(c => c.Value).Any(g => g.Count() >= 3))
-            Value += 300;
+            Value = 300;
         //Two pairs
         else if (cards.GroupBy(c => c.Value).Where(g => g.Count() >= 2).Count() >= 2)
-            Value += 200;
+            Value = 200;
         //Pair
         else if (cards.GroupBy(c => c.Value).Any(g => g.Count() >= 2))
-            Value += 100;
+            Value = 100;
         //Highcard
         else
-            Value += cards.OrderByDescending(c => c.Value).First().Value;
+        {
+            if (cards.Contains(new Card("AX")))
+                Value = 14;
+            else if (cards.Contains(new Card("KX")))
+                Value = 13;
+            else if (cards.Contains(new Card("QX")))
+                Value = 12;
+            else if (cards.Contains(new Card("JX")))
+                Value = 11;
+            else if (cards.Contains(new Card("TX")))
+                Value = 10;
+            else
+                Value = cards.Where(c => c.Value > 49 && c.Value < 58)
+                                .OrderByDescending(c => c.Value)
+                                .First()
+                                .Value;
+        }
+        Value += cards.OrderByDescending(c => c.Value).First().Value;
     }
 
     public int CompareTo(PokerHand other)
@@ -74,7 +91,7 @@ public class PokerHand : IComparable<PokerHand>
         return Value.CompareTo(other.Value);
     }
 
-    public void Main(string[] args)
+    public static void Main(string[] args)
     {
     }
 }
