@@ -15,22 +15,19 @@ public static class Kata
     // warriors is IWarrior[5]
     public static IWarrior SelectMedian(IWarrior[] warriors)
     {
-        Dictionary<IWarrior, int> warriorsPoints = new Dictionary<IWarrior, int>();
+        Dictionary<IWarrior, List<IWarrior>> betterWarriors 
+            = new Dictionary<IWarrior, List<IWarrior>>();
         foreach (IWarrior w in warriors)
-            warriorsPoints.Add(w, 0);
-        for(int i=0;i<5;i++)
+            betterWarriors.Add(w, new List<IWarrior>());
+        for (int i=0; i<4;i++) //4 compares
         {
-            if (warriors[i].IsBetter(warriors[i + 1 % 5]))
-                warriorsPoints[warriors[i]]++;
+            if (warriors[i].IsBetter(warriors[i + 1]))
+                betterWarriors[warriors[i + 1]].Add(warriors[i]);
             else
-                warriorsPoints[warriors[i + 1 % 5]]++;
+                betterWarriors[warriors[i]].Add(warriors[i + 1]);
         }
-        if (warriorsPoints.Count(p => p.Value == 2) == 1)
-            return warriorsPoints.First(p => p.Value == 2).Key;
-        return warriorsPoints.Where(p => p.Value == 2)
-                        .Aggregate((a, b) => a.Key.IsBetter(b.Key) ? a : b).Key;
+        
 
-        // Here be code
-        throw new NotImplementedException();
+        return null;
     }
 }
